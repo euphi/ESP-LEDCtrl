@@ -30,3 +30,6 @@
 
 # platformIO
 .pioenvs
+
+/lib/
+/icons/
