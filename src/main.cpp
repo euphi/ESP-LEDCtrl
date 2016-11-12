@@ -11,14 +11,17 @@
 #include <LoggerNode.h>
 
 /* includes for Libraries, so platformio can find them */
-#include <Wire.h>
-#include <Sensors.h>
+//#include <Wire.h>
+//#include <Sensors.h>
+
+#include <Atm_encoder.hpp>
 
 #include <InputController.h>
 
 #include <SSD1306.h>
 
-RGBWNode rgbn;
+RGBWNode rgbn("LED");
+RGBWNode rgbn2("LED2", 12,14,13, 255);
 SensorNode sensor;
 
 SSD1306Wire display(0x3c, SDA, SCL);
@@ -30,7 +33,9 @@ void setup() {
 	Serial.begin(115200);
 	Serial.println("Setup");
 	Serial.flush();
+	Homie_setFirmware("LEDCtrl_Küche", "0.5")
 	Homie.disableResetTrigger();
+	Homie.disableLedFeedback();
 	//Homie.setLoggingPrinter(&display);
 	Homie.setLoggingPrinter(&Serial);
 	display.setLogBuffer(4,200);
@@ -65,5 +70,4 @@ void loop() {
 	ictrl.loop();
 	Homie.loop();
 	ui.update();
-
 }
