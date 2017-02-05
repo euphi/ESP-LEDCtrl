@@ -20,7 +20,7 @@
 
 #include <SSD1306.h>
 
-RGBWNode rgbn("LED");
+RGBWNode rgbn("LED", 15, 2, 0, 16);
 RGBWNode rgbn2("LED2", 12,14,13, 255);
 SensorNode sensor;
 
