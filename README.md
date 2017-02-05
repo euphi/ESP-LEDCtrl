@@ -1,6 +1,6 @@
 # ESP-LEDCtrl
-LED Strip Controller (2x RGB, 1 White) with ESP8266 Homie (MQTT)
-
+LED Strip Controller (2x RGB, 1 White) with ESP8266 Homie (MQTT).
+Display support (SSD1306 OLED) is work in progress.
 
 ## How to Build
   * If not already installed, install Platformio
@@ -23,6 +23,10 @@ LED Strip Controller (2x RGB, 1 White) with ESP8266 Homie (MQTT)
     * Ensure working directory is ESP-LEDCtrl and run `pio run` 
     * To upload, use `pio run --target upload`
     
+## Outlook
+  * Display support
+  * touch controller support
+  * Support for "set temperature", so it can be used as thermostat.
 
 ## Hardware
   * There is a kicad project with a PCB for two RGB outputs and one white channel in the [PCB subdirectory](doc/PCB)
