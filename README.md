@@ -33,11 +33,13 @@ LED Strip Controller (2x RGB, 1 White) with ESP8266 Homie (MQTT)
 
   * The white channel uses a FET as driver, so you can drive white LED strips.
   * I2C is available on board. Till now, I used it to connect a HTU21 temperature+humidity sensor to it. I will add a touch controller to control the LEDs locally.
+  * Serial Programming Interface available. Auto-Reset into flash mode possible with esptool / platformio using the "ck"-reset method (Connect DTR to GPIO0, RTS to Reset)
   * BOM:
     * ESP-12F (Ai-Thinker) (or ESP-12E)
     * ULN 2003
     * P16NF06L
     * DCDC-Converter (Adjustable, set to 12V -> 3,3V) (DAOKAI® 10PCS Standard Stromversorgungsmodul Adjustable Step down 3A DC DC Converter 1pc New)
+    * 3x 1/4 W Resistor (Pull-Up/Down; I used 3,16kΩ)
     * Molex 4 Pin Connectors
     * Molex 3 Pin Connectors
     * 2mm Pin-Header to solder the ESP-12E
