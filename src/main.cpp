@@ -20,20 +20,27 @@
 
 #include <SSD1306.h>
 
-RGBWNode rgbn("LED", 15, 2, 0, 16);
-RGBWNode rgbn2("LED2", 12,14,13, 255);
+#define FW_NAME "LED-2x_Thermo_Ctrl"
+#define FW_VERSION "1.0.8"
+
+/* Magic sequence for Autodetectable Binary Upload */
+const char *__FLAGGED_FW_NAME = "\xbf\x84\xe4\x13\x54" FW_NAME "\x93\x44\x6b\xa7\x75";
+const char *__FLAGGED_FW_VERSION = "\x6a\x3f\x3e\x0e\xe1" FW_VERSION "\xb0\x30\x48\xd4\x1a";
+/* End of magic sequence for Autodetectable Binary Upload */
+
+RGBWNode rgbn("LED", 2, 15, 0, 16);
+RGBWNode rgbn2("LED2", 12,13,14, 255);
 SensorNode sensor;
 
 SSD1306Wire display(0x3c, SDA, SCL);
 OLEDDisplayUi ui(&display);
-InputController ictrl;
 
 
 void setup() {
-	Serial.begin(115200);
+	Serial.begin(74880);
 	Serial.println("Setup");
 	Serial.flush();
-	Homie_setFirmware("LEDCtrl_Küche", "0.5")
+	Homie_setFirmware(FW_NAME, FW_VERSION);
 	Homie.disableResetTrigger();
 	Homie.disableLedFeedback();
 	//Homie.setLoggingPrinter(&display);
@@ -67,7 +74,6 @@ void setup() {
 }
 
 void loop() {
-	ictrl.loop();
 	Homie.loop();
 	ui.update();
 }
