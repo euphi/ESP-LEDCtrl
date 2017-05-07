@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:board_full-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -433,7 +434,7 @@ F 3 "" H 5100 5300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ULN2003A U2
+L ULN2003A-RESCUE-board_full U2
 U 1 1 58959B4F
 P 5800 4150
 F 0 "U2" H 5800 4250 50  0000 C CNN

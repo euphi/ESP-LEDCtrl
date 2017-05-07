@@ -1,4 +1,4 @@
-(kicad_pcb (version 4) (host pcbnew 4.0.5-e0-6337~52~ubuntu16.10.1)
+(kicad_pcb (version 4) (host pcbnew 4.0.6-e0-6349~52~ubuntu16.10.1)
 
   (general
     (links 46)
@@ -65,7 +65,7 @@
     (grid_origin 139.7 76.2)
     (visible_elements FFFFFF7F)
     (pcbplotparams
-      (layerselection 0x00020_80000000)
+      (layerselection 0x00020_00000000)
       (usegerberextensions false)
       (excludeedgelayer true)
       (linewidth 0.100000)
@@ -85,7 +85,7 @@
       (padsonsilk true)
       (subtractmaskfromsilk false)
       (outputformat 4)
-      (mirror false)
+      (mirror true)
       (drillshape 2)
       (scaleselection 1)
       (outputdirectory ""))
