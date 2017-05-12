@@ -21,7 +21,7 @@
 #include <SSD1306.h>
 
 #define FW_NAME "LED-2x_Thermo_Ctrl"
-#define FW_VERSION "1.0.8"
+#define FW_VERSION "1.0.10"
 
 /* Magic sequence for Autodetectable Binary Upload */
 const char *__FLAGGED_FW_NAME = "\xbf\x84\xe4\x13\x54" FW_NAME "\x93\x44\x6b\xa7\x75";
@@ -37,12 +37,12 @@ OLEDDisplayUi ui(&display);
 
 
 void setup() {
-	Serial.begin(74880);
-	Serial.println("Setup");
-	Serial.flush();
 	Homie_setFirmware(FW_NAME, FW_VERSION);
 	Homie.disableResetTrigger();
 	Homie.disableLedFeedback();
+	Serial.begin(74880);
+	Serial.println("Setup");
+	Serial.flush();
 	//Homie.setLoggingPrinter(&display);
 	Homie.setLoggingPrinter(&Serial);
 	display.setLogBuffer(4,200);
