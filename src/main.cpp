@@ -10,6 +10,7 @@
 #include <SensorNode.h>
 #include <LoggerNode.h>
 
+
 /* includes for Libraries, so platformio can find them */
 //#include <Wire.h>
 //#include <Sensors.h>
@@ -20,8 +21,9 @@
 
 #include <SSD1306.h>
 
+#include "buildnumber.h"
 #define FW_NAME "LED-2x_Thermo_Ctrl"
-#define FW_VERSION "1.0.10"
+#define FW_VERSION "1.1." BUILD_NUMBER
 
 /* Magic sequence for Autodetectable Binary Upload */
 const char *__FLAGGED_FW_NAME = "\xbf\x84\xe4\x13\x54" FW_NAME "\x93\x44\x6b\xa7\x75";

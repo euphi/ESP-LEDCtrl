@@ -1,8 +1,8 @@
 (export (version D)
   (design
-    (source /home/ian/Coding/Making/ESP_Thermostat-Board/board_full.sch)
-    (date "Sa 04 Feb 2017 17:40:11 CET")
-    (tool "Eeschema 4.0.5-e0-6337~52~ubuntu16.10.1")
+    (source /home/ian/Coding/ESP_Projects/ESP_LED/doc/PCB/board_full.sch)
+    (date "Di 16 Mai 2017 00:37:40 CEST")
+    (tool "Eeschema 4.0.6-e0-6349~52~ubuntu17.04.1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
         (title)
@@ -72,12 +72,12 @@
     (comp (ref U2)
       (value ULN2003A)
       (footprint Housings_DIP:DIP-16_W7.62mm_LongPads)
-      (libsource (lib interface) (part ULN2003A))
+      (libsource (lib board_full-rescue) (part ULN2003A-RESCUE-board_full))
       (sheetpath (names /) (tstamps /))
       (tstamp 58959B4F))
     (comp (ref Q1)
       (value Q_NMOS_GDS)
-      (footprint TO_SOT_Packages_THT:TO-220_Neutral123_Vertical_LargePads)
+      (footprint TO_SOT_Packages_THT:TO-220_Vertical)
       (libsource (lib device) (part Q_NMOS_GDS))
       (sheetpath (names /) (tstamps /))
       (tstamp 5895F222))
@@ -95,28 +95,28 @@
       (tstamp 5895FADD)))
   (libparts
     (libpart (lib conn) (part CONN_01X03)
-      (description "Connector, single row, 01x03")
+      (description "Connector, single row, 01x03, pin header")
       (footprints
-        (fp Pin_Header_Straight_1X03)
-        (fp Pin_Header_Angled_1X03)
-        (fp Socket_Strip_Straight_1X03)
-        (fp Socket_Strip_Angled_1X03))
+        (fp Pin_Header_Straight_1X*)
+        (fp Pin_Header_Angled_1X*)
+        (fp Socket_Strip_Straight_1X*)
+        (fp Socket_Strip_Angled_1X*))
       (fields
-        (field (name Reference) P)
+        (field (name Reference) J)
         (field (name Value) CONN_01X03))
       (pins
         (pin (num 1) (name P1) (type passive))
         (pin (num 2) (name P2) (type passive))
         (pin (num 3) (name P3) (type passive))))
     (libpart (lib conn) (part CONN_01X04)
-      (description "Connector, single row, 01x04")
+      (description "Connector, single row, 01x04, pin header")
       (footprints
-        (fp Pin_Header_Straight_1X04)
-        (fp Pin_Header_Angled_1X04)
-        (fp Socket_Strip_Straight_1X04)
-        (fp Socket_Strip_Angled_1X04))
+        (fp Pin_Header_Straight_1X*)
+        (fp Pin_Header_Angled_1X*)
+        (fp Socket_Strip_Straight_1X*)
+        (fp Socket_Strip_Angled_1X*))
       (fields
-        (field (name Reference) P)
+        (field (name Reference) J)
         (field (name Value) CONN_01X04))
       (pins
         (pin (num 1) (name P1) (type passive))
@@ -124,14 +124,14 @@
         (pin (num 3) (name P3) (type passive))
         (pin (num 4) (name P4) (type passive))))
     (libpart (lib conn) (part CONN_01X05)
-      (description "Connector, single row, 01x05")
+      (description "Connector, single row, 01x05, pin header")
       (footprints
-        (fp Pin_Header_Straight_1X05)
-        (fp Pin_Header_Angled_1X05)
-        (fp Socket_Strip_Straight_1X05)
-        (fp Socket_Strip_Angled_1X05))
+        (fp Pin_Header_Straight_1X*)
+        (fp Pin_Header_Angled_1X*)
+        (fp Socket_Strip_Straight_1X*)
+        (fp Socket_Strip_Angled_1X*))
       (fields
-        (field (name Reference) P)
+        (field (name Reference) J)
         (field (name Value) CONN_01X05))
       (pins
         (pin (num 1) (name P1) (type passive))
@@ -179,13 +179,30 @@
         (pin (num 20) (name GPIO10) (type BiDi))
         (pin (num 21) (name MOSI) (type BiDi))
         (pin (num 22) (name SCLK) (type BiDi))))
-    (libpart (lib interface) (part MC1413)
-      (aliases
-        (alias ULN2003)
-        (alias ULN2003A))
+    (libpart (lib device) (part Q_NMOS_GDS)
+      (description "Transistor N-MOSFET with substrate diode (general)")
+      (fields
+        (field (name Reference) Q)
+        (field (name Value) Q_NMOS_GDS))
+      (pins
+        (pin (num 1) (name G) (type input))
+        (pin (num 2) (name D) (type passive))
+        (pin (num 3) (name S) (type passive))))
+    (libpart (lib device) (part R)
+      (description Resistor)
+      (footprints
+        (fp R_*)
+        (fp R_*))
+      (fields
+        (field (name Reference) R)
+        (field (name Value) R))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib board_full-rescue) (part ULN2003A-RESCUE-board_full)
       (fields
         (field (name Reference) U)
-        (field (name Value) MC1413))
+        (field (name Value) ULN2003A-RESCUE-board_full))
       (pins
         (pin (num 1) (name I1) (type input))
         (pin (num 2) (name I2) (type input))
@@ -202,36 +219,16 @@
         (pin (num 13) (name O4) (type openCol))
         (pin (num 14) (name O3) (type openCol))
         (pin (num 15) (name O2) (type openCol))
-        (pin (num 16) (name O1) (type openCol))))
-    (libpart (lib device) (part Q_NMOS_GDS)
-      (description "Transistor N-MOSFET with substrate diode (general)")
-      (fields
-        (field (name Reference) Q)
-        (field (name Value) Q_NMOS_GDS))
-      (pins
-        (pin (num 1) (name G) (type input))
-        (pin (num 2) (name D) (type passive))
-        (pin (num 3) (name S) (type passive))))
-    (libpart (lib device) (part R)
-      (description Resistor)
-      (footprints
-        (fp R_*)
-        (fp Resistor_*))
-      (fields
-        (field (name Reference) R)
-        (field (name Value) R))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive)))))
+        (pin (num 16) (name O1) (type openCol)))))
   (libraries
     (library (logical conn)
       (uri /usr/share/kicad/library/conn.lib))
-    (library (logical interface)
-      (uri /usr/share/kicad/library/interface.lib))
-    (library (logical ESP8266)
-      (uri /home/ian/kicad/libraries/kicad-ESP8266/ESP8266.lib))
+    (library (logical board_full-rescue)
+      (uri /home/ian/Coding/ESP_Projects/ESP_LED/doc/PCB/board_full-rescue.lib))
     (library (logical device)
-      (uri /usr/share/kicad/library/device.lib)))
+      (uri /usr/share/kicad/library/device.lib))
+    (library (logical ESP8266)
+      (uri /home/ian/kicad/libraries/kicad-ESP8266/ESP8266.lib)))
   (nets
     (net (code 1) (name GND)
       (node (ref U3) (pin 2))
