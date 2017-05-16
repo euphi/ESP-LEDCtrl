@@ -15,8 +15,6 @@
 //#include <Wire.h>
 //#include <Sensors.h>
 
-#include <Atm_encoder.hpp>
-
 #include <InputController.h>
 
 #include <SSD1306.h>
