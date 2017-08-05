@@ -41,7 +41,8 @@ void setup() {
 	Homie.disableResetTrigger();
 	Homie.disableLedFeedback();
 	Serial.begin(74880);
-	Serial.println("Setup");
+	Serial.flush();
+	Serial.println("\nSetup");
 	Serial.flush();
 	//Homie.setLoggingPrinter(&display);
 	Homie.setLoggingPrinter(&Serial);
