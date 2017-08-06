@@ -11,8 +11,8 @@
 
 //TODO: Implement auto-increment, e.g. with platformio
 
-#define BUILD_NUMBER "9"
-#define COMMIT_COUNTER "1"
+#define BUILD_NUMBER "3"
+#define COMMIT_COUNTER "2"
 
 
 #endif /* SRC_BUILDNUMBER_H_ */

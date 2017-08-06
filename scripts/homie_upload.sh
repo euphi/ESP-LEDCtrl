@@ -42,7 +42,10 @@ echo -e "md5sum: ${md5sum}"
 #mosquitto_pub -d -h cubietruck -p 1883 -t "homie/ian_bench/\$implementation/ota/checksum" -m "$md5sum"
 
 #send new firmware
+device=thermo_ian
+#device=ian_bench
+
 base64enc=`base64 -w0 $binfile`
 #mosquitto_pub -d -h cubietruck -p 1883 -t "homie/ian_bench/\$implementation/ota/firmware/$md5sum"  -l <<< "$base64enc"
-mosquitto_pub -d -h cubietruck -p 1883 -t "homie/ian_bench/\$implementation/ota/firmware/$md5sum"  -f $binfile
+mosquitto_pub -d -h cubietruck -p 1883 -t "homie/$device/\$implementation/ota/firmware/$md5sum"  -f $binfile
 
