@@ -28,13 +28,11 @@ const char *__FLAGGED_FW_NAME = "\xbf\x84\xe4\x13\x54" FW_NAME "\x93\x44\x6b\xa7
 const char *__FLAGGED_FW_VERSION = "\x6a\x3f\x3e\x0e\xe1" FW_VERSION "\xb0\x30\x48\xd4\x1a";
 /* End of magic sequence for Autodetectable Binary Upload */
 
-RGBWNode rgbn("LED", 2, 15, 0, 16);
-RGBWNode rgbn2("LED2", 12,13,14, 255);
+RGBWNode rgb("LED", 14, 15, 16, RGBWNode::NOPIN);
+RGBWNode w1("LED_W1", RGBWNode::NOPIN,RGBWNode::NOPIN,RGBWNode::NOPIN, 0);
+RGBWNode w2("LED_W2", RGBWNode::NOPIN,RGBWNode::NOPIN,RGBWNode::NOPIN, 2);
+
 SensorNode sensor;
-
-SSD1306Wire display(0x3c, SDA, SCL);
-OLEDDisplayUi ui(&display);
-
 
 void setup() {
 	Homie_setFirmware(FW_NAME, FW_VERSION);
@@ -44,37 +42,13 @@ void setup() {
 	Serial.flush();
 	Serial.println("\nSetup");
 	Serial.flush();
+	Wire.begin(SDA, SCL);
 	//Homie.setLoggingPrinter(&display);
 	Homie.setLoggingPrinter(&Serial);
-	display.setLogBuffer(4,200);
 	LN.setLoglevel(LoggerNode::DEBUG);
-
-	ui.setTargetFPS(30);
-
-//	// Customize the active and inactive symbol
-//	ui.setActiveSymbol(activeSymbol);
-//	ui.setInactiveSymbol(inactiveSymbol);
-
-	// You can change this to
-	// TOP, LEFT, BOTTOM, RIGHT
-	ui.setIndicatorPosition(BOTTOM);
-
-	// Defines where the first frame is located in the bar.
-	ui.setIndicatorDirection(LEFT_RIGHT);
-
-	// You can change the transition that is used
-	// SLIDE_LEFT, SLIDE_RIGHT, SLIDE_UP, SLIDE_DOWN
-	ui.setFrameAnimation(SLIDE_LEFT);
-	ui.disableAutoTransition();
-	ui.disableAllIndicators();
-	ui.init();
-
-	display.flipScreenVertically();
-
 	Homie.setup();
 }
 
 void loop() {
 	Homie.loop();
-	ui.update();
 }
